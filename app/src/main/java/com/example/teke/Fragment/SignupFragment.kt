@@ -132,6 +132,7 @@ class SignupFragment : Fragment() {
         }
 
         binding.textSignInClick.setOnClickListener {
+
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_signupFragment_to_signInFragment)
         }
@@ -148,16 +149,21 @@ class SignupFragment : Fragment() {
         cpass: String,
     ) {
         val user = RegisterEntity(0, name, email, address, pass, cpass)
-        database.RegisterDatabaseDao().insert(RegisterEntity(user.userId,
-            user.Name,
-            user.email,
-            user.address,
-            user.passwrd,
-            user.confirmPass))
+        database.RegisterDatabaseDao().insert(
+            RegisterEntity(
+                user.userId,
+                user.Name,
+                user.email,
+                user.address,
+                user.passwrd,
+                user.confirmPass
+            )
+        )
         Toast.makeText(requireContext(), "User Registered..!", Toast.LENGTH_SHORT).show()
         editor = sp.edit()
         editor.putString("email", email)
         editor.putString("name", name)
+        editor.putString("address", address)
         editor.putBoolean("first", true)
         editor.commit()
 

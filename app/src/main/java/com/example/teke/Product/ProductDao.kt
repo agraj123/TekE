@@ -1,5 +1,6 @@
 package com.example.teke.Product
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -19,7 +20,7 @@ interface ProductDao {
     fun fetchProductList(userId: Int): List<ProductEntity>
 
     @Query("SELECT * FROM product where product_save= :save and product_userid= :userId ORDER BY product_name")
-    fun fetchWishList(save: String, userId: Int): Flow<List<ProductEntity>>
+    fun fetchWishList(save: String, userId: Int): List<ProductEntity>
 
     @Query("SELECT product_save FROM product where productId= :productId and product_userid= :userId")
     fun getProductSave(productId: Int?, userId: Int): Int
@@ -68,5 +69,4 @@ interface ProductDao {
 
     @Update
     fun ucart(productEntity: ProductEntity?)
-
 }

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_contactUsFragment"
             app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -44,5 +47,15 @@
         android:name="com.example.teke.ContactUsFragment"
         android:label="fragment_contact_us"
         tools:layout="@layout/fragment_contact_us" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.teke.Fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="profile"
+            app:argType="string"
+            android:defaultValue="null" />
+    </fragment>
 
 </navigation>

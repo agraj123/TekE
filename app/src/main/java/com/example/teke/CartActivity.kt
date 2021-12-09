@@ -28,7 +28,7 @@ class CartActivity : AppCompatActivity() {
         database = RegisterDatabase.getInstance(this)
         arrayList = database.ProductDao().fetchSave()
         playAdapter =
-            listOf(ProductEntity(0, null, "", "", "", "", 0, 0, 0,""))
+            listOf(ProductEntity(0, null, "", "", "", "", 0, 0, 0, ""))
 
         val a = database.ProductDao().setFavData(1)
         Log.d("Cart", "onCreateView: $a[0]")

@@ -63,22 +63,24 @@ class Dashboard : AppCompatActivity() {
         binding.startNav.setNavigationItemSelectedListener {
 
             when (it.itemId) {
-//                R.id.nav_contactus -> {
-//                    val navHostFragment =
+                R.id.nav_contactus -> {
+//                    val navHostFragment2 =
 //                        supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-//                    val navController = navHostFragment.navController
-//                    navController.navigate(R.id.action_dashboardFragment_to_contactUsFragment)
-//                }
+//                    val navController2 = navHostFragment2.navController
+//                    navController2.navigate(R.id.action_dashboardFragment_to_contactUsFragment)
+                }
                 R.id.home_menu -> {
                     val intent = Intent(this, Dashboard::class.java)
                     startActivity(intent)
                 }
 
-                R.id.nav_account -> Toast.makeText(
-                    this,
-                    "Clicked Account",
-                    Toast.LENGTH_SHORT
-                ).show()
+                R.id.nav_account -> {
+                    val navHostFragment1 =
+                        supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+                    val navController1 = navHostFragment1.navController
+                    navController1.navigate(R.id.action_dashboardFragment_to_profileFragment)
+                }
+
                 R.id.nav_address -> {
                     Toast.makeText(
                         this,

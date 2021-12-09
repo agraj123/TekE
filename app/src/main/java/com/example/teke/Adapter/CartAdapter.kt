@@ -81,8 +81,6 @@ class CartAdapter(productList: List<ProductEntity?>?, context: Context) :
                         arrayList!![position]!!.product_save, qty, amounts
                     )
                 )
-            } else {
-                database.ProductDao().delete(arrayList!![position]!!.product_name)
             }
         }
     }
