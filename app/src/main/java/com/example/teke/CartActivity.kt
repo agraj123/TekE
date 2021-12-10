@@ -1,16 +1,23 @@
 package com.example.teke
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teke.Adapter.CartAdapter
 import com.example.teke.Adapter.ProductAdapterThird
 import com.example.teke.Product.ProductEntity
 import com.example.teke.User.RegisterDatabase
+import com.example.teke.ViewModel.CartViewModel
 import com.example.teke.databinding.ActivityCartBinding
 import kotlinx.android.synthetic.main.activity_dashboard.*
+import java.util.EnumSet.of
+import java.util.List.of
+import java.util.Set.of
 
 class CartActivity : AppCompatActivity() {
 
@@ -19,6 +26,8 @@ class CartActivity : AppCompatActivity() {
     lateinit var arrayList: List<ProductEntity>
     lateinit var adapter: CartAdapter
     private lateinit var playAdapter: List<ProductEntity>
+
+//    private val cartViewModel: CartViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,5 +46,28 @@ class CartActivity : AppCompatActivity() {
         binding.cartRecycler.layoutManager = LinearLayoutManager(this)
         binding.cartRecycler.adapter = adapter
 
+        val total = 0
+
+        binding.cartAmount.text = adapter.toString()
+
+        val productEntity = ProductEntity(0, null, "", "", "", "", 0, 0, 1, "")
+//        cartViewModel = ViewModelProvider.of(this).get(CartViewModel::class.java)
+
+//        var total = 0
+//        cartViewModel.allProducts(productEntity).observe(this) {
+//            it.let {
+//                adapter.arrayList
+//                total = 0
+//                for (i in it.indices) {
+//                    total += it[i].cart_total.toInt()
+//                }
+//                binding.cartAmount.text = total.toString()
+//            }
+//        }
+
+        binding.backCart.setOnClickListener {
+            val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+        }
     }
 }

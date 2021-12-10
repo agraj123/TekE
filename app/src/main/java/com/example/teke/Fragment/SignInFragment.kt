@@ -22,6 +22,8 @@ import com.example.teke.User.RegisterDatabase
 import com.example.teke.User.RegisterEntity
 import com.example.teke.databinding.FragmentSignInBinding
 import kotlinx.android.synthetic.main.fragment_sign_in.*
+import com.google.android.material.snackbar.Snackbar
+
 
 class SignInFragment : Fragment() {
 
@@ -105,10 +107,10 @@ class SignInFragment : Fragment() {
         if (login != null) {
             editor = sp.edit()
             editor.putString("email", login.email)
-            editor.putString("name",login.passwrd)
-            if (first){
+            editor.putString("name", login.passwrd)
+            if (first) {
                 editor.putBoolean("first", true)
-            }else{
+            } else {
                 editor.putBoolean("first", false)
             }
             editor.commit()
@@ -116,11 +118,17 @@ class SignInFragment : Fragment() {
             val intent = Intent(requireContext(), Dashboard::class.java)
             startActivity(intent)
 
-            Toast.makeText(requireContext(), "Logged In!", Toast.LENGTH_LONG).show()
+            val snackbar = Snackbar
+                .make(requireView(), "Welcome $user", Snackbar.LENGTH_LONG)
+            snackbar.show()
+
+            //Toast.makeText(requireContext(), "Logged In!", Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(requireContext(),
+            Toast.makeText(
+                requireContext(),
                 "User not found..! \n Please try again.",
-                Toast.LENGTH_LONG).show()
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 

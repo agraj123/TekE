@@ -47,7 +47,7 @@ interface ProductDao {
     fun insertCart(cartEntity: ProductEntity?)
 
     @Query("SELECT * FROM product where product_userid= :userId ORDER BY product_name")
-    fun fetchCartList(userId: Int): List<ProductEntity>
+    fun fetchCartList(userId: Int): Flow<List<ProductEntity>>
 
     @Query("SELECT * FROM product WHERE cart_qty=:Name")
     fun setFavData(Name: Int?): List<ProductEntity>
@@ -69,4 +69,7 @@ interface ProductDao {
 
     @Update
     fun ucart(productEntity: ProductEntity?)
+
+    @Insert
+    fun allProducts(cartEntity: List<ProductEntity>)
 }

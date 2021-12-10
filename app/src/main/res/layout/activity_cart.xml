@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ABB6F1"
+    android:background="#84B8E1"
     tools:context=".CartActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:text="amount"
-                android:textColor="@color/blue_800"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -95,12 +95,13 @@
         </LinearLayout>
 
         <Button
-            android:background="@drawable/buttondesign"
             android:id="@+id/cart_place_order_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:background="@drawable/buttondesign"
             android:text="Buy Now"
+            android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

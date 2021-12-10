@@ -27,16 +27,18 @@ class ProfileFragment : Fragment() {
 
         sp = this.requireActivity()
             .getSharedPreferences(PREF_DATA, Context.MODE_PRIVATE)
-        editor = sp.edit()
 
-        sp = requireActivity().getPreferences(0)
-        sp.getString("name", binding.profileName.toString())!!
-        sp.getString("email", binding.profileEmail.toString())!!
-        sp.getString("address", binding.profileAddress.toString())!!
+        val name: String = sp.getString("name", "")!!
+        val email: String = sp.getString("email", "")!!
+        val address: String = sp.getString("address", "")!!
 
-//        binding.profileName.text = name
-//        binding.profileEmail.text = email
-//        binding.profileAddress.text = address
+        binding.profileName.text = name
+        binding.profileEmail.text = email
+
+        binding.profileNameText.text = name
+        binding.profileEmailText.text = email
+
+        binding.profileAddressText.text = address
 
         return binding.root
 
