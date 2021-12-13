@@ -81,13 +81,13 @@ class Dashboard : AppCompatActivity() {
                     navController1.navigate(R.id.action_dashboardFragment_to_profileFragment)
                 }
 
-                R.id.nav_address -> {
-                    Toast.makeText(
-                        this,
-                        "Clicked Address",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                R.id.nav_order -> {
+                    val navHostFragment1 =
+                        supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+                    val navController1 = navHostFragment1.navController
+                    navController1.navigate(R.id.action_dashboardFragment_to_myOrderFragment)
                 }
+
                 R.id.nav_cart -> {
                     startActivity(Intent(this@Dashboard, CartActivity::class.java))
                 }

@@ -34,7 +34,7 @@ class WishlistFragment : Fragment() {
 
         database = RegisterDatabase.getInstance(requireContext())
         arrayList = database.ProductDao().fetchWish()
-        playAdapter = listOf(ProductEntity(0, null, "", "", "", "", 0, 0, 0, ""))
+        playAdapter = listOf(ProductEntity(0, null, "", "", "", "", 0, 0, 0, "",0))
 
         val a = database.ProductDao().setWishData(1)
         Log.d("Fav", "onCreateView: $a[0]")

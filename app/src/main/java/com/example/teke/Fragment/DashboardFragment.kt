@@ -132,7 +132,7 @@ class DashboardFragment : Fragment() {
                 "LG 3 Start, 1.5 Ton AC",
                 "AC",
                 currentId,
-                0, 0,""
+                0, 0,"",0
             )
             database.ProductDao().insertProduct(product)
             product = ProductEntity(
@@ -143,7 +143,7 @@ class DashboardFragment : Fragment() {
                 "Connector Wire",
                 "Wire",
                 currentId,
-                0, 0,""
+                0, 0,"",0
             )
             database.ProductDao().insertProduct(product)
             product = ProductEntity(
@@ -159,7 +159,7 @@ class DashboardFragment : Fragment() {
                 "Bass, Good Quality, Water Proof",
                 "Headphone",
                 currentId,
-                0, 0,""
+                0, 0,"",0
             )
             database.ProductDao().insertProduct(product)
             product = ProductEntity(
@@ -170,7 +170,7 @@ class DashboardFragment : Fragment() {
                 "4K LED TV",
                 "TV",
                 currentId,
-                0, 0,""
+                0, 0,"",0
             )
             database.ProductDao().insertProduct(product)
             product = ProductEntity(
@@ -181,7 +181,7 @@ class DashboardFragment : Fragment() {
                 "2GB RAM, 4GB Graphics",
                 "Laptop",
                 currentId,
-                0, 0,""
+                0, 0,"",0
             )
             database.ProductDao().insertProduct(product)
             product = ProductEntity(
@@ -192,7 +192,7 @@ class DashboardFragment : Fragment() {
                 "Good sound Quality",
                 "Mic",
                 currentId,
-                0, 0,""
+                0, 0,"",0
             )
             database.ProductDao().insertProduct(product)
             editor.putBoolean("first", false)

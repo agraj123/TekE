@@ -54,7 +54,7 @@ class ProductAdapterThird(product: List<ProductEntity?>, var context: Context) :
                     arrayList[position]!!.product_description,
                     arrayList[position]!!.product_category,
                     arrayList[position]!!.product_userid,
-                    0, arrayList[position]!!.cart_qty,arrayList[position]!!.cart_total
+                    0, arrayList[position]!!.cart_qty, arrayList[position]!!.cart_total, 0
                 )
                 database.ProductDao().ucart(updateCartData)
             } else {
@@ -67,7 +67,7 @@ class ProductAdapterThird(product: List<ProductEntity?>, var context: Context) :
                     arrayList[position]!!.product_description,
                     arrayList[position]!!.product_category,
                     arrayList[position]!!.product_userid,
-                    0, arrayList[position]!!.cart_qty,arrayList[position]!!.cart_total
+                    0, arrayList[position]!!.cart_qty, arrayList[position]!!.cart_total, 0
                 )
                 database.ProductDao().updateCart(true, arrayList[position]!!.product_name)
             }
@@ -104,7 +104,7 @@ class ProductAdapterThird(product: List<ProductEntity?>, var context: Context) :
                     arrayList[position]!!.product_description,
                     arrayList[position]!!.product_category,
                     arrayList[position]!!.product_userid,
-                    0, 0,arrayList[position]!!.cart_total
+                    0, 0, arrayList[position]!!.cart_total, 0
                 )
                 database.ProductDao().updateProduct(false, arrayList[position]!!.product_name)
                 holder.imagecart.setImageDrawable(
@@ -122,7 +122,7 @@ class ProductAdapterThird(product: List<ProductEntity?>, var context: Context) :
                     arrayList[position]!!.product_description,
                     arrayList[position]!!.product_category,
                     arrayList[position]!!.product_userid,
-                    1, 0,arrayList[position]!!.cart_total
+                    1, 0, arrayList[position]!!.cart_total, 0
                 )
                 database.ProductDao().updateProduct(true, arrayList[position]!!.product_name)
                 holder.imagecart.setImageDrawable(

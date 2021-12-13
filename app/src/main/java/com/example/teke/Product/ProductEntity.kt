@@ -40,6 +40,9 @@ data class ProductEntity(
     @ColumnInfo(name = "cart_total")
     val cart_total: String,
 
+    @ColumnInfo(name = "cart_order")
+    val cart_order: Int,
+
     ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teke.Adapter.CartAdapter
@@ -37,7 +38,7 @@ class CartActivity : AppCompatActivity() {
         database = RegisterDatabase.getInstance(this)
         arrayList = database.ProductDao().fetchSave()
         playAdapter =
-            listOf(ProductEntity(0, null, "", "", "", "", 0, 0, 0, ""))
+            listOf(ProductEntity(0, null, "", "", "", "", 0, 0, 0, "", 0))
 
         val a = database.ProductDao().setFavData(1)
         Log.d("Cart", "onCreateView: $a[0]")
@@ -46,11 +47,45 @@ class CartActivity : AppCompatActivity() {
         binding.cartRecycler.layoutManager = LinearLayoutManager(this)
         binding.cartRecycler.adapter = adapter
 
-        val total = 0
+        binding.cartPlaceOrderBtn.setOnClickListener {
 
-        binding.cartAmount.text = adapter.toString()
 
-        val productEntity = ProductEntity(0, null, "", "", "", "", 0, 0, 1, "")
+
+//            val cartData = arrayList[0].cart_order
+//            Log.d("TAG", "onBindViewHolder: $cartData")
+//
+//            if (cartData == 1) {
+//                val cartUpdate = ProductEntity(
+//                    arrayList[0].productId,
+//                    arrayList[0].product_image,
+//                    arrayList[0].product_name,
+//                    arrayList[0].product_amount,
+//                    arrayList[0].product_description,
+//                    arrayList[0].product_category,
+//                    arrayList[0].product_userid,
+//                    arrayList[0].product_save, arrayList[0].cart_qty, arrayList[0].cart_total, 0
+//                )
+//                database.ProductDao().ucart(cartUpdate)
+//            } else {
+//                val cartUpdate = ProductEntity(
+//                    arrayList[0].productId,
+//                    arrayList[0].product_image,
+//                    arrayList[0].product_name,
+//                    arrayList[0].product_amount,
+//                    arrayList[0].product_description,
+//                    arrayList[0].product_category,
+//                    arrayList[0].product_userid,
+//                    arrayList[0].product_save, arrayList[0].cart_qty, arrayList[0].cart_total, 0
+//                )
+//                database.ProductDao().ucart(cartUpdate)
+//            }
+        }
+
+//        val total = 0
+
+        // binding.cartAmount.text = adapter.toString()
+
+//        val productEntity = ProductEntity(0, null, "", "", "", "", 0, 0, 1, "")
 //        cartViewModel = ViewModelProvider.of(this).get(CartViewModel::class.java)
 
 //        var total = 0
