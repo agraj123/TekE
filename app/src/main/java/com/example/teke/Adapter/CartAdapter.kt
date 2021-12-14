@@ -40,24 +40,6 @@ class CartAdapter(productList: List<ProductEntity?>?, context: Context) :
 
         database = RegisterDatabase.getInstance(context)
 
-        val cartData = arrayList!![position]!!.cart_order
-        Log.d("TAG", "onBindViewHolder: $cartData")
-
-        if (cartData == 1) {
-            Log.d("position", "onBindViewHolder: $position")
-            val updateCartData = ProductEntity(
-                arrayList!![position]!!.productId,
-                arrayList!![position]!!.product_image,
-                arrayList!![position]!!.product_name,
-                arrayList!![position]!!.product_amount,
-                arrayList!![position]!!.product_description,
-                arrayList!![position]!!.product_category,
-                arrayList!![position]!!.product_userid,
-                0, arrayList!![position]!!.cart_qty, arrayList!![position]!!.cart_total, 0
-            )
-            database.ProductDao().ucart(updateCartData)
-        }
-
         holder.cartPlus.setOnClickListener {
             Toast.makeText(context, "${arrayList!![position]?.cart_qty}", Toast.LENGTH_SHORT)
                 .show()
@@ -75,7 +57,7 @@ class CartAdapter(productList: List<ProductEntity?>?, context: Context) :
                     arrayList!![position]!!.product_description,
                     arrayList!![position]!!.product_category,
                     arrayList!![position]!!.product_userid,
-                    arrayList!![position]!!.product_save, qty, amount, 0
+                    arrayList!![position]!!.product_save, qty, amount, 0,0
                 )
             )
         }
@@ -85,7 +67,7 @@ class CartAdapter(productList: List<ProductEntity?>?, context: Context) :
             val id = arrayList!![position]!!.productId
             var qty = arrayList!![position]!!.cart_qty
             var amounts = arrayList!![position]!!.product_amount
-            if (qty > 1) {
+            if (qty >= 1) {
                 qty -= 1
                 amounts = (qty * amounts.toInt()).toString()
                 database.ProductDao().ucart(
@@ -97,7 +79,7 @@ class CartAdapter(productList: List<ProductEntity?>?, context: Context) :
                         arrayList!![position]!!.product_description,
                         arrayList!![position]!!.product_category,
                         arrayList!![position]!!.product_userid,
-                        arrayList!![position]!!.product_save, qty, amounts, 0
+                        arrayList!![position]!!.product_save, qty, amounts, 0,0
                     )
                 )
             }

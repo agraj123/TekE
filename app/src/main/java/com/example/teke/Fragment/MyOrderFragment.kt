@@ -17,10 +17,10 @@ import com.example.teke.databinding.FragmentMyOrderBinding
 class MyOrderFragment : Fragment() {
 
     lateinit var binding: FragmentMyOrderBinding
-    lateinit var database: RegisterDatabase
-    lateinit var arrayList: List<ProductEntity>
-    lateinit var adapter: MyOrderAdapter
-    private lateinit var playAdapter: List<ProductEntity>
+//    lateinit var database: RegisterDatabase
+//    lateinit var arrayList: List<ProductEntity>
+//    lateinit var adapter: MyOrderAdapter
+//    private lateinit var playAdapter: List<ProductEntity>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,17 +28,17 @@ class MyOrderFragment : Fragment() {
     ): View? {
         binding = FragmentMyOrderBinding.inflate(layoutInflater, container, false)
 
-        database = RegisterDatabase.getInstance(requireContext())
-        arrayList = database.ProductDao().fetchSave()
-        playAdapter =
-            listOf(ProductEntity(0, null, "", "", "", "", 0, 0, 0, "", 0))
-
-        val a = database.ProductDao().setFavData(1)
-        Log.d("Cart", "onCreateView: $a[0]")
-        adapter = MyOrderAdapter(arrayList, requireContext())
-        binding.recyclerMyOrder.setHasFixedSize(true)
-        binding.recyclerMyOrder.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerMyOrder.adapter = adapter
+//        database = RegisterDatabase.getInstance(requireContext())
+//        arrayList = database.ProductDao().fetchOrder()
+//        playAdapter =
+//            listOf(ProductEntity(0, null, "", "", "", "", 0, 0, 0, "", 0,0))
+//
+//        val a = database.ProductDao().setOrderData(1)
+//        Log.d("Cart", "onCreateView: $a[0]")
+//        adapter = MyOrderAdapter(arrayList, requireContext())
+//        binding.recyclerOrder.setHasFixedSize(true)
+//        binding.recyclerOrder.layoutManager = LinearLayoutManager(requireContext())
+//        binding.recyclerOrder.adapter = adapter
 
         return binding.root
     }

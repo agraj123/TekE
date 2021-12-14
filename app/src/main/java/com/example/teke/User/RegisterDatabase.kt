@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.teke.Product.ProductDao
 import com.example.teke.Product.ProductEntity
 
-@Database(entities = [RegisterEntity::class, ProductEntity::class], version = 11)
+@Database(entities = [RegisterEntity::class, ProductEntity::class], version = 12)
 abstract class RegisterDatabase : RoomDatabase() {
 
     abstract fun RegisterDatabaseDao(): RegisterDatabaseDao

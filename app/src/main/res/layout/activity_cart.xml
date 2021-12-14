@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:background="@drawable/buttondesign"
-            android:text="Place Order"
+            android:text="Buy Now"
             android:textColor="@color/white"
             android:textSize="12sp" />
 

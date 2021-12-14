@@ -73,9 +73,16 @@ interface ProductDao {
     @Insert
     fun allProducts(cartEntity: List<ProductEntity>)
 
-    @Query("SELECT * FROM product WHERE cart_order= 1")
+    @Query("SELECT * FROM product WHERE product_placed= 1")
     fun fetchOrder(): List<ProductEntity>
 
-    @Query("SELECT * FROM product WHERE cart_order=:Name")
+    @Query("SELECT * FROM product WHERE product_placed=:Name")
     fun setOrderData(Name: Int?): List<ProductEntity>
+
+    @Query("SELECT * FROM product WHERE cart_order= 1")
+    fun fetchFinalOrder(): List<ProductEntity>
+
+    @Query("SELECT * FROM product WHERE cart_order=:Name")
+    fun setFinalOrderData(Name: Int?): List<ProductEntity>
+
 }

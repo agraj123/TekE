@@ -63,12 +63,14 @@ class Dashboard : AppCompatActivity() {
         binding.startNav.setNavigationItemSelectedListener {
 
             when (it.itemId) {
+
                 R.id.nav_contactus -> {
-//                    val navHostFragment2 =
-//                        supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-//                    val navController2 = navHostFragment2.navController
-//                    navController2.navigate(R.id.action_dashboardFragment_to_contactUsFragment)
+                    val navHostFragment2 =
+                        supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+                    val navController2 = navHostFragment2.navController
+                    navController2.navigate(R.id.action_dashboardFragment_to_contactUsFragment)
                 }
+
                 R.id.home_menu -> {
                     val intent = Intent(this, Dashboard::class.java)
                     startActivity(intent)
@@ -98,6 +100,7 @@ class Dashboard : AppCompatActivity() {
                     val navController = navHostFragment.navController
                     navController.navigate(R.id.action_dashboardFragment_to_wishlistFragment)
                 }
+
                 R.id.nav_logout -> {
                     editor.putString("email", "")
                     editor.putBoolean("first", false)

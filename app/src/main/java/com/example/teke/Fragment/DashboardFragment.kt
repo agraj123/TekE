@@ -99,30 +99,6 @@ class DashboardFragment : Fragment() {
 
         val first = sp.getBoolean("first", true)
 
-//        val total = 3
-//        var count = 1
-//
-//        binding.COUNTPAGER.text = "$count / $total"
-//
-//        binding.VIEWPAGER.adapter = SliderAdapter(fragmentManager!!)
-//
-//        binding.VIEWPAGER.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-//            override fun onPageScrolled(
-//                position: Int,
-//                positionOffset: Float,
-//                positionOffsetPixels: Int,
-//            ) {
-//            }
-//
-//            override fun onPageSelected(position: Int) {
-//                count = 0
-//                count = position + 1
-//                binding.COUNTPAGER.text = "$count / $total"
-//            }
-//
-//            override fun onPageScrollStateChanged(state: Int) {}
-//        })
-
         if (first) {
             var product = ProductEntity(
                 0,
@@ -132,7 +108,7 @@ class DashboardFragment : Fragment() {
                 "LG 3 Start, 1.5 Ton AC",
                 "AC",
                 currentId,
-                0, 0,"",0
+                0, 0,"",0,0
             )
             database.ProductDao().insertProduct(product)
             product = ProductEntity(
@@ -143,7 +119,7 @@ class DashboardFragment : Fragment() {
                 "Connector Wire",
                 "Wire",
                 currentId,
-                0, 0,"",0
+                0, 0,"",0,0
             )
             database.ProductDao().insertProduct(product)
             product = ProductEntity(
@@ -159,7 +135,7 @@ class DashboardFragment : Fragment() {
                 "Bass, Good Quality, Water Proof",
                 "Headphone",
                 currentId,
-                0, 0,"",0
+                0, 0,"",0,0
             )
             database.ProductDao().insertProduct(product)
             product = ProductEntity(
@@ -170,7 +146,7 @@ class DashboardFragment : Fragment() {
                 "4K LED TV",
                 "TV",
                 currentId,
-                0, 0,"",0
+                0, 0,"",0,0
             )
             database.ProductDao().insertProduct(product)
             product = ProductEntity(
@@ -181,7 +157,7 @@ class DashboardFragment : Fragment() {
                 "2GB RAM, 4GB Graphics",
                 "Laptop",
                 currentId,
-                0, 0,"",0
+                0, 0,"",0,0
             )
             database.ProductDao().insertProduct(product)
             product = ProductEntity(
@@ -192,7 +168,7 @@ class DashboardFragment : Fragment() {
                 "Good sound Quality",
                 "Mic",
                 currentId,
-                0, 0,"",0
+                0, 0,"",0,0
             )
             database.ProductDao().insertProduct(product)
             editor.putBoolean("first", false)

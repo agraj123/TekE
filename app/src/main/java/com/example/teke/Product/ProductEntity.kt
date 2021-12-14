@@ -40,6 +40,9 @@ data class ProductEntity(
     @ColumnInfo(name = "cart_total")
     val cart_total: String,
 
+    @ColumnInfo(name = "product_placed")
+    val product_placed: Int,
+
     @ColumnInfo(name = "cart_order")
     val cart_order: Int,
 
