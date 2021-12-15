@@ -16,9 +16,6 @@ data class RegisterEntity(
     @ColumnInfo(name = "email")
     var email: String,
 
-//    @ColumnInfo(name = "number")
-//    var number: Int,
-
     @ColumnInfo(name = "address")
     var address: String,
 
@@ -27,5 +24,4 @@ data class RegisterEntity(
 
     @ColumnInfo(name = "confirm_password_text")
     var confirmPass: String,
-
-    )
+)

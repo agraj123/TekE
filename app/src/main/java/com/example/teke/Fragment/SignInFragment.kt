@@ -107,7 +107,7 @@ class SignInFragment : Fragment() {
         if (login != null) {
             editor = sp.edit()
             editor.putString("email", login.email)
-            editor.putString("name", login.passwrd)
+            editor.putString("password", login.passwrd)
             if (first) {
                 editor.putBoolean("first", true)
             } else {
@@ -118,9 +118,7 @@ class SignInFragment : Fragment() {
             val intent = Intent(requireContext(), Dashboard::class.java)
             startActivity(intent)
 
-            val snackbar = Snackbar
-                .make(requireView(), "Welcome $user", Snackbar.LENGTH_LONG)
-            snackbar.show()
+            Snackbar.make(requireView(), "Welcome $user", Snackbar.LENGTH_LONG).show()
 
             //Toast.makeText(requireContext(), "Logged In!", Toast.LENGTH_LONG).show()
         } else {

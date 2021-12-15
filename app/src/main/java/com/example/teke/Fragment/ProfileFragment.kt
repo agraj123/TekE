@@ -41,6 +41,5 @@ class ProfileFragment : Fragment() {
         binding.profileAddressText.text = address
 
         return binding.root
-
     }
 }
