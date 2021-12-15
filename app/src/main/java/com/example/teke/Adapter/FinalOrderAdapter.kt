@@ -17,8 +17,8 @@ import com.example.teke.R
 import com.example.teke.User.RegisterDatabase
 import kotlinx.android.synthetic.main.dashboarddesign2.view.*
 
-class MyOrderAdapter(productList: List<ProductEntity?>?, context: Context) :
-    RecyclerView.Adapter<MyOrderAdapter.ViewHolder>() {
+class FinalOrderAdapter(productList: List<ProductEntity?>?, context: Context) :
+    RecyclerView.Adapter<FinalOrderAdapter.ViewHolder>() {
 
     private val productList: List<ProductEntity?>? by lazy { productList }
     var arrayList = productList
@@ -27,18 +27,17 @@ class MyOrderAdapter(productList: List<ProductEntity?>?, context: Context) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.designmyorder, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.finalorderdesign, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.image.setImageBitmap(getImage(arrayList!![position]!!.product_image))
         holder.name.text = arrayList!![position]!!.product_name
         holder.qnt.text = arrayList!![position]!!.cart_qty.toString()
         holder.price.text = arrayList!![position]!!.product_amount
-        holder.cartQty.text = arrayList!![position]!!.cart_total
 
         database = RegisterDatabase.getInstance(context)
-
     }
 
     override fun getItemCount(): Int {
@@ -46,10 +45,10 @@ class MyOrderAdapter(productList: List<ProductEntity?>?, context: Context) :
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var name: TextView = itemView.findViewById(R.id.pGetNameOrder)
-        var qnt: TextView = itemView.findViewById(R.id.pGetQntOrder)
-        var price: TextView = itemView.findViewById(R.id.pGetPriceOrder)
-        val cartQty: TextView = itemView.findViewById(R.id.pGetPriceTotalOrder)
+        var image: ImageView = itemView.findViewById(R.id.imageOProduct)
+        var name: TextView = itemView.findViewById(R.id.textOrder)
+        var qnt: TextView = itemView.findViewById(R.id.textQnt)
+        var price: TextView = itemView.findViewById(R.id.textPrice)
     }
 
     private fun getImage(byteArray: ByteArray?): Bitmap {

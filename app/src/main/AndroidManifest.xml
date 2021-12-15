@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TekE">
         <activity
-            android:name=".PlaceOrder"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:name=".OrderedProduct"
             android:exported="true" />
         <activity
             android:name=".CartActivity"

@@ -63,9 +63,9 @@ class CartActivity : AppCompatActivity() {
                     database.ProductDao().ucart(updateCartData)
                 } else {
                     Toast.makeText(this, "Placed", Toast.LENGTH_SHORT).show()
-                    supportFragmentManager.beginTransaction()
-                        .add(R.id.content, PlacedOrderFragment()).commit()
-
+                    val intent = Intent(this, OrderedProduct::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             }
         }
