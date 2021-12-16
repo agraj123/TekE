@@ -57,7 +57,7 @@ class CartAdapter(productList: List<ProductEntity?>?, context: Context) :
                     arrayList!![position]!!.product_description,
                     arrayList!![position]!!.product_category,
                     arrayList!![position]!!.product_userid,
-                    arrayList!![position]!!.product_save, qty, amount, 0,0
+                    arrayList!![position]!!.product_save, qty, amount, 0, 0
                 )
             )
         }
@@ -79,7 +79,7 @@ class CartAdapter(productList: List<ProductEntity?>?, context: Context) :
                         arrayList!![position]!!.product_description,
                         arrayList!![position]!!.product_category,
                         arrayList!![position]!!.product_userid,
-                        arrayList!![position]!!.product_save, qty, amounts, 0,0
+                        arrayList!![position]!!.product_save, qty, amounts, 0, 0
                     )
                 )
             }

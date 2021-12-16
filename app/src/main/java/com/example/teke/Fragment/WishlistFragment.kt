@@ -23,7 +23,7 @@ class WishlistFragment : Fragment() {
     lateinit var binding: FragmentWishlistBinding
     lateinit var database: RegisterDatabase
     lateinit var arrayList: List<ProductEntity>
-    lateinit var adapter: ProductAdapterThird
+    lateinit var adapter: WishlistAdapter
     private lateinit var playAdapter: List<ProductEntity>
 
     override fun onCreateView(
@@ -38,7 +38,7 @@ class WishlistFragment : Fragment() {
 
         val a = database.ProductDao().setWishData(1)
         Log.d("Fav", "onCreateView: $a[0]")
-        adapter = ProductAdapterThird(arrayList, requireContext())
+        adapter = WishlistAdapter(arrayList, requireContext())
         binding.wishlistRecycler.setHasFixedSize(true)
         binding.wishlistRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.wishlistRecycler.adapter = adapter

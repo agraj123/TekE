@@ -18,6 +18,7 @@ import com.example.teke.R
 import com.example.teke.User.RegisterDatabase
 import androidx.navigation.Navigation
 import com.example.teke.Fragment.DashboardFragmentDirections
+import com.example.teke.Fragment.WishlistFragmentDirections
 
 class WishlistAdapter(product: List<ProductEntity?>, var context: Context) :
     RecyclerView.Adapter<WishlistAdapter.ViewHolder>() {
@@ -43,9 +44,63 @@ class WishlistAdapter(product: List<ProductEntity?>, var context: Context) :
         Log.d("TAG", "onBindViewHolder: $save")
         database.ProductDao().fetchWishList("", save)
 
+        val cartData = arrayList[position]!!.cart_qty
+        Log.d("TAG", "onBindViewHolder: $cartData")
+
+        holder.savetext.setOnClickListener {
+
+            if (cartData == 0) {
+                Log.d("position", "onBindViewHolder: $position")
+                val updateCartData = ProductEntity(
+                    arrayList[position]!!.productId,
+                    arrayList[position]!!.product_image,
+                    arrayList[position]!!.product_name,
+                    arrayList[position]!!.product_amount,
+                    arrayList[position]!!.product_description,
+                    arrayList[position]!!.product_category,
+                    arrayList[position]!!.product_userid,
+                    arrayList[position]!!.product_save, 1, arrayList[position]!!.cart_total, 0, 0
+                )
+                database.ProductDao().ucart(updateCartData)
+            } else {
+                Toast.makeText(context, "Already in cart", Toast.LENGTH_SHORT).show()
+            }
+        }
+        val wishListData = arrayList[position]!!.product_save
+        Log.d("TAG", "onBindViewHolder: $cartData")
+
+        holder.imagecart.setOnClickListener {
+            if (wishListData == 1) {
+                val updateCartData = ProductEntity(
+                    arrayList[position]!!.productId,
+                    arrayList[position]!!.product_image,
+                    arrayList[position]!!.product_name,
+                    arrayList[position]!!.product_amount,
+                    arrayList[position]!!.product_description,
+                    arrayList[position]!!.product_category,
+                    arrayList[position]!!.product_userid,
+                    0, arrayList[position]!!.cart_qty, arrayList[position]!!.cart_total, 0, 0
+                )
+                database.ProductDao().ucart(updateCartData)
+                holder.imagecart.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        context,
+                        R.drawable.save_foreground
+                    )
+                )
+            } else {
+                holder.imagecart.setImageDrawable(
+                    AppCompatResources.getDrawable(
+                        context,
+                        R.drawable.filled_save_foreground
+                    )
+                )
+            }
+        }
+
         holder.itemView.setOnClickListener {
             val action =
-                DashboardFragmentDirections.actionDashboardFragmentToWishlistFragment()
+                WishlistFragmentDirections.actionWishlistFragmentToDetailFragment(holder.name.text.toString())
 
             Navigation.findNavController(holder.itemView)
                 .navigate(action)
@@ -61,6 +116,7 @@ class WishlistAdapter(product: List<ProductEntity?>, var context: Context) :
         var amount: TextView = itemView.findViewById(R.id.wishlist_amount)
         var image: ImageView = itemView.findViewById(R.id.wishlist_iv)
         var imagecart: ImageView = itemView.findViewById(R.id.wishlist_save)
+        var savetext: TextView = itemView.findViewById(R.id.wishlist_cart)
     }
 
     private fun getImage(byteArray: ByteArray?): Bitmap {

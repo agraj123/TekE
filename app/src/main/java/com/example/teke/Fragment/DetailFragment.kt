@@ -28,6 +28,9 @@ class DetailFragment : Fragment() {
 
         database = RegisterDatabase.getInstance(requireContext())
 
+        val wishListData = args.wishdata
+        binding.detailName.text = wishListData
+
         val second = args.name
         binding.detailName.text = second
 

@@ -39,12 +39,20 @@
             android:name="name"
             app:argType="string"
             android:defaultValue="null" />
+        <argument
+            android:name="wishdata"
+            app:argType="string"
+            android:defaultValue="null" />
     </fragment>
     <fragment
         android:id="@+id/wishlistFragment"
         android:name="com.example.teke.Fragment.WishlistFragment"
         android:label="fragment_wishlist"
-        tools:layout="@layout/fragment_wishlist" />
+        tools:layout="@layout/fragment_wishlist" >
+        <action
+            android:id="@+id/action_wishlistFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
         android:name="com.example.teke.Fragment.ContactUsFragment"

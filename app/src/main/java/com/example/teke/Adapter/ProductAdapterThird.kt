@@ -56,6 +56,7 @@ class ProductAdapterThird(product: List<ProductEntity?>, var context: Context) :
                     arrayList[position]!!.product_userid,
                     0, arrayList[position]!!.cart_qty, arrayList[position]!!.cart_total, 0,0
                 )
+                Toast.makeText(context,"Already in cart!",Toast.LENGTH_SHORT).show()
                 database.ProductDao().ucart(updateCartData)
             } else {
                 Log.d("position", "onBindViewHolder: $position")
@@ -67,9 +68,9 @@ class ProductAdapterThird(product: List<ProductEntity?>, var context: Context) :
                     arrayList[position]!!.product_description,
                     arrayList[position]!!.product_category,
                     arrayList[position]!!.product_userid,
-                    0, arrayList[position]!!.cart_qty, arrayList[position]!!.cart_total, 0,0
+                    0, 1, arrayList[position]!!.cart_total, 0,0
                 )
-                database.ProductDao().updateCart(true, arrayList[position]!!.product_name)
+                database.ProductDao().ucart(updateCartData)
             }
         }
 
