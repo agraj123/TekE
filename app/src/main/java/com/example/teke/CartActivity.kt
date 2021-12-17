@@ -5,12 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.teke.Adapter.CartAdapter
 import com.example.teke.Fragment.PlacedOrderFragment
+import com.example.teke.Product.CartRepo
 import com.example.teke.Product.ProductEntity
 import com.example.teke.User.RegisterDatabase
+import com.example.teke.ViewModel.CartViewModel
 import com.example.teke.databinding.ActivityCartBinding
+import kotlinx.android.synthetic.main.activity_cart.*
 
 class CartActivity : AppCompatActivity() {
 
@@ -18,6 +24,7 @@ class CartActivity : AppCompatActivity() {
     lateinit var database: RegisterDatabase
     lateinit var arrayList: List<ProductEntity>
     lateinit var adapter: CartAdapter
+    lateinit var viewModel: CartViewModel
     private lateinit var playAdapter: List<ProductEntity>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,16 +33,44 @@ class CartActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         database = RegisterDatabase.getInstance(this)
-        arrayList = database.ProductDao().fetchSave()
-        playAdapter =
-            listOf(ProductEntity(0, null, "", "", "", "", 0, 0, 0, "", 0, 0))
 
-        val a = database.ProductDao().setFavData(1)
-        Log.d("Cart", "onCreateView: $a[0]")
-        adapter = CartAdapter(arrayList, this)
-        binding.cartRecycler.setHasFixedSize(true)
-        binding.cartRecycler.layoutManager = LinearLayoutManager(this)
-        binding.cartRecycler.adapter = adapter
+        val ViewModel: CartViewModel by viewModels {
+            viewModelFactory((application as shopApplication).repository)
+        }
+
+        ViewModel.allProducts.observe(this) {
+            ProductEntity(0, null, "", "", "", "", 0, 0, 0, "", 0, 0)
+            adapter = CartAdapter(it, this)
+            binding.cartRecycler.setHasFixedSize(true)
+            binding.cartRecycler.layoutManager = LinearLayoutManager(this)
+            binding.cartRecycler.adapter = adapter
+        }
+
+//        arrayList = database.ProductDao().fetchSave()
+//        playAdapter =
+//            listOf(ProductEntity(0, null, "", "", "", "", 0, 0, 0, "", 0, 0))
+
+        ViewModel.allProducts.observe(this) {
+            it.let {
+                adapter.submitLIst(it)
+                var total = 0
+                for (i in it.indices) {
+                    if (it[i].cart_total == ""){
+
+                    }else {
+                        total += it[i].cart_total.toInt()
+                    }
+                }
+                binding.cartAmount.text = total.toString()
+            }
+        }
+
+//        val a = database.ProductDao().setFavData(1)
+//        Log.d("Cart", "onCreateView: $a[0]")
+//        adapter = CartAdapter(arrayList, this)
+//        binding.cartRecycler.setHasFixedSize(true)
+//        binding.cartRecycler.layoutManager = LinearLayoutManager(this)
+//        binding.cartRecycler.adapter = adapter
 
         binding.backCart.setOnClickListener {
             val intent = Intent(this, Dashboard::class.java)

@@ -52,7 +52,7 @@ interface ProductDao {
     fun setFavData(Name: Int?): List<ProductEntity>
 
     @Query("SELECT * FROM product WHERE cart_qty>= 1")
-    fun fetchSave(): List<ProductEntity>
+    fun fetchSave(): Flow<List<ProductEntity>>
 
     @Query("SELECT * FROM product WHERE product_save=:Name")
     fun setWishData(Name: Int?): List<ProductEntity>

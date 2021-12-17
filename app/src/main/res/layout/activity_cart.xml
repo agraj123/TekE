@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:text="amount"
-                android:textColor="@color/white"
+                android:textColor="@color/blue_800"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

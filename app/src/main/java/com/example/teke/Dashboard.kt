@@ -9,12 +9,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.teke.ViewModel.CartViewModel
 import com.example.teke.databinding.ActivityDashboardBinding
 import kotlinx.android.synthetic.main.activity_dashboard.*
 
@@ -36,6 +40,7 @@ class Dashboard : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(findViewById(R.id.TOOLBAR_MENU))
+
         sp = getSharedPreferences(PREF_DATA, MODE_PRIVATE)
         editor = sp.edit()
         val first = sp.getBoolean("first", false)

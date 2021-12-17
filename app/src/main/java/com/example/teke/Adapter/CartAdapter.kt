@@ -116,4 +116,8 @@ class CartAdapter(productList: List<ProductEntity?>?, context: Context) :
             return oldItem.product_image.contentEquals(newItem.product_image)
         }
     }
+
+    fun submitLIst(arrayList: List<ProductEntity>) {
+        this.arrayList = arrayList
+    }
 }
